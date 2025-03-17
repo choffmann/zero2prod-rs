@@ -29,6 +29,7 @@
             llvmPackages.bintools
             rustup
             rust-analyzer
+            cargo-watch
           ];
 
           RUSTC_VERSION = overrides.toolchain.channel;
