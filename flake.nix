@@ -29,6 +29,9 @@
             llvmPackages.bintools
             rustup
             rust-analyzer
+            pkg-config
+            openssl
+
             cargo-watch
             cargo-expand
           ];
