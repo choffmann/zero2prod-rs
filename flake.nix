@@ -30,6 +30,7 @@
             rustup
             rust-analyzer
             cargo-watch
+            cargo-expand
           ];
 
           RUSTC_VERSION = overrides.toolchain.channel;
