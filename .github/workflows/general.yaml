@@ -12,7 +12,7 @@ env:
   SQLX_VERSION: 0.8.0
   SQLX_FEATURES: "rustls,postgres"
   APP_USER: app
-  APP_USER_PWD: secret
+  APP_USER_PWD: geheim
   APP_DB_NAME: newsletter
 
 jobs:
@@ -75,6 +75,8 @@ jobs:
   clippy:
     name: Clippy
     runs-on: ubuntu-latest
+    env:
+      SQLX_OFFLINE: true
     steps:
       - uses: actions/checkout@v4
       - name: Install the Rust toolchain
