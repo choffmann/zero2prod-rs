@@ -24,8 +24,15 @@
           inherit system overlays;
         };
         rustToolchain = pkgs.pkgsBuildBuild.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
-        nativeBuildInputs = with pkgs; [rustToolchain pkg-config lld];
         buildInputs = with pkgs; [openssl];
+        nativeBuildInputs = with pkgs; [
+          rustToolchain
+          pkg-config
+          lld
+          sqlx-cli
+          cargo-watch
+          cargo-expand
+        ];
       in {
         devShells.default = pkgs.mkShell rec {
           inherit buildInputs nativeBuildInputs;
