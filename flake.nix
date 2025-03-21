@@ -26,16 +26,26 @@
         rustToolchain = pkgs.pkgsBuildBuild.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
         buildInputs = with pkgs; [openssl];
         nativeBuildInputs = with pkgs; [
+          rustup
           rustToolchain
           pkg-config
           lld
           sqlx-cli
           cargo-watch
           cargo-expand
+          cargo-udeps
         ];
       in {
         devShells.default = pkgs.mkShell rec {
           inherit buildInputs nativeBuildInputs;
+
+          RUSTC_VERSION = overrides.toolchain.channel;
+
+          shellHook = ''
+            export PATH=$PATH:''${CARGO_HOME:-~/.cargo}/bin
+            export PATH=$PATH:''${RUSTUP_HOME:-~/.rustup}/toolchains/$RUSTC_VERSION-x86_64-unknown-linux-gnu/bin/
+          '';
+
           # nativeBuildInputs = [pkgs.pkg-config];
           # buildInputs = with pkgs; [
           #   rust-analyzer
