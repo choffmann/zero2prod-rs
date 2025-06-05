@@ -29,6 +29,7 @@ unicode-segmentation = "1"
 claims = "0.7"
 validator = "0.20"
 rand = { version = "0.8", features = ["std_rng"] }
+thiserror = "2.0.12"
 
 [dependencies.sqlx]
 version = "0.8"
